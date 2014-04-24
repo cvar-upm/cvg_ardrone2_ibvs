@@ -1,0 +1,31 @@
+<package>
+  <description brief="droneController">
+
+     droneController
+
+  </description>
+  <author>Jose Luis Sanchez Lopez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneController</url>
+  
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  
+  <depend package="atlante"/>
+  
+  <depend package="droneMsgs"/>
+  <depend package="droneModule"/>
+  
+  <depend package="opencv2"/>
+
+  <depend package="droneOpenTLDInterface"/>
+  
+   <export>
+      <cpp cflags="-I${prefix}/src/include -I${prefix}/src/include/controller -I${prefix}/src/include/controller/config -I${prefix}/src/include/controller/config/linkquad -I${prefix}/src/include/controller/config/parrot -I${prefix}/src/include/controller/config/pelican -I${prefix}/src/include/controller/midlevelCnt -I${prefix}/src/include/controller/other -I${prefix}/src/include/controller/stateMachine -I${prefix}/src/include/Other  -I${prefix}/src/include/stateObserver/EKF_lib" lflags="-L${prefix}/lib -ldroneController"/>
+    </export>
+
+
+</package>
+
+

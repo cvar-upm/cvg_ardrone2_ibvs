@@ -1,0 +1,10 @@
+# get Current Log Path and Init Timestamp
+# ros::Time   	init_timestamp
+# std::string 	currentlog_path
+# bool 		ack, is data ok?
+
+---
+
+time 	init_stamp
+string 	currentlog_path
+bool ack

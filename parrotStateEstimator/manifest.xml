@@ -1,0 +1,17 @@
+<package>
+  <description brief="parrotStateEstimator">
+
+     parrotStateEstimator
+
+  </description>
+  <author>Jose Luis Sanchez Lopez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/parrotStateEstimator</url>
+  <depend package="parrotDriver"/>
+  <depend package="droneStateEstimator"/>
+  <depend package="droneLogger"/>
+
+</package>
+
+

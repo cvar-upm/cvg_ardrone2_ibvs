@@ -1,0 +1,34 @@
+# Temporary files
+*~
+builds
+
+# documents appeared after JL repaired the compilation process in my computer (after Ubuntu 12.10 installation)
+*pre1
+
+GLC_lib
+arucoLib
+documentation
+droneArucoEye
+droneArucoInterface
+droneGraphInterface
+droneLocalizer
+droneMissionPlanner
+droneObstacleProcessor
+droneSimulator
+droneTrajectoryPlanner
+droneYawPlanner
+ext_resources/Matlab
+logs
+obstacleProcessorLib
+obstaclesSimulator
+papers
+parrotArucoEye
+parrotBrain
+parrotGraphInterface
+parrotInterface
+parrotLocalizer
+parrotMissionPlanner
+parrotObstacleProcessor
+parrotTrajectoryPlanner
+parrotYawPlanner
+

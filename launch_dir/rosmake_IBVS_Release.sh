@@ -1,0 +1,1 @@
+rosmake ardrone_autonomy ros_opentld ros_opentld parrotController parrotBrainInterface atlante droneMsgs droneModule droneOpenTLDInterface tld_msgs tld_tracker parrotDriver droneLogger parrotLogger droneStateEstimator parrotStateEstimator referenceFrames localizationLib newmat11Lib pugixml droneController parrotBrainInterface droneBrain

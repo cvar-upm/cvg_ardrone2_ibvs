@@ -1,0 +1,6 @@
+imgs/hud/*
+imgs/rect/*
+imgs/t*
+logs/*
+rqt_rviz_ogre.log
+videos/*

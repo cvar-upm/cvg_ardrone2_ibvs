@@ -1,0 +1,12 @@
+<!-- Launches: parrotController -->
+<launch>
+	<arg name="drone_id_namespace"  default="drone0" />
+	<arg name="drone_id_int" 	default="0" />
+	<arg name="my_stack_directory" 	default="$(env IBVS_STACK)" />
+	<group ns="$(arg drone_id_namespace)">
+		<node name="parrotIBVSController" pkg="parrotController" type="parrotIBVSController" output="screen">
+			<param name="droneId" value="$(arg drone_id_int)" type="int"/>
+			<param name="stackPath" value="$(arg my_stack_directory)" type="string"/>
+		</node>
+	</group>
+</launch>

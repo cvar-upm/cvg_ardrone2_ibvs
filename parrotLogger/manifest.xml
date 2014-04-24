@@ -1,0 +1,16 @@
+<package>
+  <description brief="parrotLogger">
+
+     parrotLogger
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/parrotLogger</url>
+  <depend package="atlante"/>
+  <depend package="droneLogger"/>
+
+</package>
+
+

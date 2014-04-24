@@ -1,0 +1,21 @@
+<package>
+  <description brief="newmat11Lib">
+
+     newmat11Lib
+
+  </description>
+  <author>Jose Luis Sanchez and Paloma de la Puente</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/newmat11Lib</url>
+  
+
+  
+  <export>
+      <cpp cflags="-I${prefix}/src" lflags="-L${prefix}/lib -lnewmat11Lib"/>
+    </export>
+  
+  
+</package>
+
+

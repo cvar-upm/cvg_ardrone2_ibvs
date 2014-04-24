@@ -1,0 +1,23 @@
+<package>
+  <description brief="droneBrain">
+
+     droneBrain
+
+  </description>
+  <author>Jose Luis Sanchez Lopez</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneBrain</url>
+  <depend package="droneController"/>
+  <depend package="droneStateEstimator"/>
+  <depend package="droneOpenTLDInterface"/>
+  <depend package="ardrone_autonomy"/>
+  
+  <export>
+  	<cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneBrain"/>
+  </export>
+
+
+</package>
+
+

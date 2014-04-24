@@ -1,0 +1,23 @@
+<package>
+  <description brief="droneLogger">
+
+     droneLogger
+
+  </description>
+  <author>Jesus Pestana Puerta</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/droneLogger</url>
+  <depend package="roscpp"/>
+  <depend package="std_msgs"/>
+  <depend package="atlante"/>
+  <depend package="droneModule"/>
+
+  <export>
+      <!-- JPP: For some reason I need the -lboost_system flag, otherwise parrotController will fail to compile -->
+      <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -ldroneLogger -lboost_system"/>
+  </export>
+
+</package>
+
+
