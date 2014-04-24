@@ -73,7 +73,7 @@ The installation follows the same steps needed usually to compile a self-contain
         $ # create folder where external ROS stacks are downloaded
         $ rosws set ./extStack
         $ # set folder to download the ardrone_autonomy ROS package
-        $ rosws set ./extStack/ardrone_autonomy --git https://github.com/AutonomyLab/ardrone_autonomy.git
+        $ rosws set ./extStack/ardrone_autonomy --git https://github.com/AutonomyLab/ardrone_autonomy.git --version=fuerte-devel
         $ # set folder to download the ROS_OpenTLD ROS package
         $ rosws set ./extStack/ros_opentld --git https://github.com/Ronan0912/ros_opentld.git
         $ # set folder to download the cvg_ardrone2_ibvs ROS package
@@ -82,7 +82,7 @@ The installation follows the same steps needed usually to compile a self-contain
         $ rosws update
         ```
 
-* Set up the `IMAV_STACK` and `IMAV_WORKSPACE` environment variables. 
+* Set up the `IBVS_STACK` and `IBVS_WORKSPACE` environment variables. 
 
         ```bash
         $ # note: ${ROS_WORKSPACE}='~/workspace/ros/'
@@ -94,14 +94,14 @@ The installation follows the same steps needed usually to compile a self-contain
 * Each time the cvg_ardrone2_ibvs is going to be used, do the following (note that the ROS_WORKSPACE and other ROS environment variables should not be loaded in the .bashrc file or other ubuntu terminal startup files):
 
         ```bash
-        $ cd ${IMAV_STACK}
+        $ cd ${IBVS_STACK}
         $ source setup.sh
         ```
 
 * Final steps installation instructions:
 
         ```bash
-        $ cd ${IMAV_STACK}
+        $ cd ${IBVS_STACK}
         $ source setup.sh
         $ rospack profile
         $ rosdep update
@@ -114,14 +114,41 @@ The installation follows the same steps needed usually to compile a self-contain
 * Compile the stack:
 
         ```bash
-        $ cd ${IMAV_STACK}/launch_dir/
+        $ cd ${IBVS_STACK}/launch_dir/
         $ ./rosmake_IBVS_Release.sh
         ```
+* If you run into this compilation problem
+
+        ```
+        CMake Error at /usr/share/cmake-2.8/Modules/FindOpenCV.cmake:239 (MESSAGE):
+          OpenCV required but some headers or libs not found.  Please specify it's
+          location with OpenCV_ROOT_DIR env.  variable.
+        Call Stack (most recent call first):
+          CMakeLists.txt:6 (find_package)
+        ```
+
+Then substitute "find_package(OpenCV)" for:
+
+        ```
+        ros_opentld/opentld/build/git-opentld/CMakeLists.txt
+        ros_opentld/tld_tracker/CMakeLists.txt
+        ```
+
+In these files:
+
+        ```
+        IF(NOT OpenCV_FOUND)
+            set(OpenCV_DIR /opt/ros/groovy/share/opencv2/)
+            find_package(OpenCV)
+        ENDIF(NOT OpenCV_FOUND)
+        ```
+
+
 ## Coordinate Frames
 
 ### Multirotor coordinate frame
 
-In the documentation located in `${IMAV_STACK}/documentation/Coordinate_Frames/Coordinate_Frames_documentation.tex/pdf`, this reference frame is called F_{drone_LMrT}.
+In the documentation located in `${IBVS_STACK}/documentation/Coordinate_Frames/Coordinate_Frames_documentation.tex/pdf`, this reference frame is called F_{drone_LMrT}.
 
 The reference frame that is used to reference the multirotor's telemetry, broadcasted by the multirotor's ROS driver, is:
 
@@ -157,18 +184,18 @@ The sign convention for the commands, received by the multirotor's ROS driver, i
 
 In order to run the stack, it was decided to run each node in a separate tab of a terminal window. The initialization of the architecture is done by executing shell scripts that open a new terminal with each node running in its tab. The script that is available is the following (please take a look at them to understand how do they work):
 
-- `${IMAV_STACK}/launch_dir/parrot_IBVSController_launcher_Release.sh`
+- `${IBVS_STACK}/launch_dir/parrot_IBVSController_launcher_Release.sh`
 
 NOTE: all the launchfiles open a separate terminal with multiple tabs, where each tab usually runs only one tab. If you close the terminal tabs using the close button at the corner of the window which has multiple tabs, then only one of the tabs will be closed correctly (the one that is currently selected):
 
 - The easiest way to do this fast, and cleanly is to: first, press `control+c` on every tab (navigating with `control+repag` and `control+avpag`), second, use the shortcut `ctrl+shift+w` to close first all terminal tabs and, third, `ctrl+shift+q` to close the las terminal tab (which closes the window too) including all tabs. 
 
-- The following script might be used to send a SIG\_TERM to all the terminals (equivalent to pressing `control+c` in them): ${IMAV_STACK}/launch_dir/stop.sh .
+- The following script might be used to send a SIG\_TERM to all the terminals (equivalent to pressing `control+c` in them): ${IBVS_STACK}/launch_dir/stop.sh .
 
 The launch scripts have to be called using the following sintax in the shell terminal: 
 
         ```bash
-        $ cd ${IMAV_STACK}/launch_dir
+        $ cd ${IBVS_STACK}/launch_dir
         $ ./parrot_IBVSController_launcher_Release.sh
         ```
 
