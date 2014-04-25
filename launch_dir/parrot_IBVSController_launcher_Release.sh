@@ -14,7 +14,7 @@ gnome-terminal	 		\
 						roscore; 
 						exec bash\""  \
 	--tab --title "droneLogger"	--command "bash -c \"
-						roslaunch ./IMAV2013_launchfiles/parrotLogger.launch --wait drone_id_namespace:=drone$NUMID_DRONE drone_id_int:=$NUMID_DRONE my_stack_directory:=${IBVS_STACK}; 
+						roslaunch ./IBVS2013_launchfiles/parrotLogger.launch --wait drone_id_namespace:=drone$NUMID_DRONE drone_id_int:=$NUMID_DRONE my_stack_directory:=${IBVS_STACK}; 
 						exec bash\""  \
 	--tab --title "ardrone_driver"	--command "bash -c \"
 						roslaunch ./ardrone_launchfiles/ardrone_outdoors.launch --wait drone_id_namespace:=drone$NUMID_DRONE;

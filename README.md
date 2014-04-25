@@ -143,6 +143,8 @@ In these files:
         ENDIF(NOT OpenCV_FOUND)
         ```
 
+It is necessary to calibrate the AR Drone 2 camera, either as explained in the {IBVS_STACK}/ext_resources folder, or to copy the sample calibrations files located in {IBVS_STACK}/ext_resources/ardrone2_cameracalibration/camera_info/ardrone_bottom.yaml to the folder ~/.ros/camera_info .
+
 
 ## Coordinate Frames
 
