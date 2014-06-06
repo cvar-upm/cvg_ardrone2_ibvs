@@ -3,7 +3,7 @@
 	
 	<arg name="drone_id_namespace"  default="drone0" />
 	<arg name="drone_id_int" 	default="0" />
-	<arg name="my_stack_directory" 	default="$(env IMAV_STACK)" />
+	<arg name="my_stack_directory" 	default="$(env IBVS_STACK)" />
 	<group ns="$(arg drone_id_namespace)">
 		<node name="parrotLogger" pkg="parrotLogger" type="parrotLogger" output="screen">
 			<param name="droneId" value="$(arg drone_id_int)" type="int"/>
