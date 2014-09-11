@@ -297,6 +297,11 @@ This software stack uses other third-party open-source libraries (some of them a
 
 - [Professor Dr. Pascual Campoy](http://www.vision4uav.com/?q=pascual "Professor Dr. Pascual Campoy"): head of the [CVG](http://www.vision4uav.com/ "Computer Vision Group, CVG, CAR, UPM-CSIC"), CAR, CSIC-UPM.
 
+## Other collaborators
+
+- [Patrick McGarey](https://www.linkedin.com/pub/patrick-mcgarey/2b/a/189) and [Msc. Mariusz Wzorek](http://www.linkedin.com/pub/mariusz-wzorek/7/a17/906): help and advice during experimental testing.
+
+- [Msc. Ignacio Mellado](https://www.linkedin.com/in/ignaciomellado) and [PhD Iván F. Mondragón B.](http://www.javeriana.edu.co/blogs/imondragon/): extensive shared experience on vision based real-time robotics and multirotors in particular.
 
 ## Contact Information
 
