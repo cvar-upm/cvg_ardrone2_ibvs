@@ -1,0 +1,29 @@
+<package>
+	<name>droneOpenTLDInterface</name>
+	<version>1.0.0</version>
+	<description>
+    		This package is droneOpenTLDInterface.
+	</description>
+	<author email="jespestana@gmail.com">Jesus Pestana Puerta</author>
+	<maintainer email="jespestana@gmail.com">Jesus Pestana Puerta</maintainer>
+  	<license>BSD</license>
+	<url>http://ros.org/wiki/droneOpenTLDInterface</url>
+
+  	<buildtool_depend>catkin</buildtool_depend>
+
+	
+  	<build_depend>roscpp</build_depend>
+  	<build_depend>std_msgs</build_depend>
+  	<build_depend>tld_msgs</build_depend>
+  	<build_depend>atlante</build_depend>
+  	<build_depend>droneModule</build_depend>
+
+	<run_depend>roscpp</run_depend>
+  	<run_depend>std_msgs</run_depend>
+  	<run_depend>tld_msgs</run_depend>
+  	<run_depend>atlante</run_depend>
+  	<run_depend>droneModule</run_depend>
+
+</package>
+
+

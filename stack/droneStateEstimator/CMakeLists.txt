@@ -1,5 +1,7 @@
-cmake_minimum_required(VERSION 2.4.6)
-include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
+cmake_minimum_required(VERSION 2.8.3)
+
+set(PROJECT_NAME droneStateEstimator)
+project(${PROJECT_NAME})
 
 ### Use version 2011 of C++ (c++11). By default ROS uses c++98
 #see: http://stackoverflow.com/questions/10851247/how-to-activate-c-11-in-cmake
@@ -13,38 +15,6 @@ add_definitions(-std=c++0x)
 #  Release        : w/o debug symbols, w/ optimization
 #  RelWithDebInfo : w/ debug symbols, w/ optimization
 #  MinSizeRel     : w/o debug symbols, w/ optimization, stripped binaries
-#set(ROS_BUILD_TYPE RelWithDebInfo)
-
-rosbuild_init()
-
-#set the default path for built executables to the "bin" directory
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-#set the default path for built libraries to the "lib" directory
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
-
-#uncomment if you have defined messages
-rosbuild_genmsg()
-#uncomment if you have defined services
-rosbuild_gensrv()
-
-#common commands for building c++ executables and libraries
-#rosbuild_add_library(${PROJECT_NAME} src/example.cpp)
-#target_link_libraries(${PROJECT_NAME} another_library)
-
-#rosbuild_add_boost_directories()
-#rosbuild_link_boost(${PROJECT_NAME} thread)
-
-#rosbuild_add_executable(example examples/example.cpp)
-#target_link_libraries(example ${PROJECT_NAME})
-
-#http://answers.ros.org/question/11294/a-problem-of-linking-external-libraries/
-#gcc -I/usr/xenomai/include -D_GNU_SOURCE -D_REENTRANT -D__XENO__ -Wall -pipe -lnative -L/usr/xenomai/lib -lxenomai -lpthread -lrtdk hellworld.c -o helloworld
-#link_directories(/usr/xenomai/lib)
-#rosbuild_add_executable(listener src/listener.cpp)
-#include_directories(/usr/xenomai/include)
-#add_definitions(-D_GNU_SOURCE -D_REENTRANT -D__XENO__)
-#rosbuild_add_compile_flags(listener -Wall -pipe)
-#target_link_libraries(listener native xenomai pthread rtdk)
 
 
 
@@ -112,21 +82,47 @@ set(DRONESTATEESTIMATOR_HEADER_FILES
 	)
 
 
+find_package(catkin REQUIRED
+	COMPONENTS message_generation roscpp std_msgs droneMsgs referenceFrames droneModule pugixml)
+
+
 #OpenCV
 find_package(OpenCV REQUIRED)
-include_directories(${OpenCV_INCLUDE_DIRS})
 
 
-#Parrot controller compile
-include_directories(${DRONESTATEESTIMATOR_INCLUDE_DIR})
-rosbuild_add_library(droneStateEstimator ${DRONESTATEESTIMATOR_SOURCE_FILES} ${DRONESTATEESTIMATOR_HEADER_FILES})
 
-target_link_libraries(droneStateEstimator ${OpenCV_LIBS})
-
-set(OTHER_FILES
-        manifest.xml
+add_service_files(
+    DIRECTORY
+        srv
+    FILES
+	setInitDroneYaw_srv_type.srv
 )
-add_custom_target(other_files SOURCES ${OTHER_FILES})
+
+generate_messages(DEPENDENCIES std_msgs)
+
+
+catkin_package(
+        INCLUDE_DIRS ${DRONESTATEESTIMATOR_INCLUDE_DIR}
+        LIBRARIES droneStateEstimator
+        CATKIN_DEPENDS message_runtime roscpp std_msgs droneMsgs referenceFrames droneModule pugixml
+	DEPENDS OpenCV
+  )
+
+
+
+include_directories(${DRONESTATEESTIMATOR_INCLUDE_DIR})
+include_directories(${OpenCV_INCLUDE_DIRS})
+include_directories(${catkin_INCLUDE_DIRS})
+
+
+
+
+
+add_library(droneStateEstimator ${DRONESTATEESTIMATOR_SOURCE_FILES} ${DRONESTATEESTIMATOR_HEADER_FILES})
+add_dependencies(droneStateEstimator ${catkin_EXPORTED_TARGETS})
+target_link_libraries(droneStateEstimator ${OpenCV_LIBS})
+target_link_libraries(droneStateEstimator ${catkin_LIBRARIES})
+
 
 
 

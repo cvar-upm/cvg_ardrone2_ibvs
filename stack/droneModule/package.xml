@@ -1,0 +1,18 @@
+<package>
+	<name>droneModule</name>
+	<version>1.0.0</version>
+	<description>
+    		This package is droneModule.
+	</description>
+	<author email="jl.sanchez@upm.es">Jose Luis Sanchez-Lopez</author>
+	<maintainer email="jl.sanchez@upm.es">Jose Luis Sanchez-Lopez</maintainer>
+  	<license>BSD</license>
+	<url>http://ros.org/wiki/droneModule</url>
+
+  	<buildtool_depend>catkin</buildtool_depend>
+
+
+
+</package>
+
+
