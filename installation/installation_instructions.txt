@@ -1,0 +1,92 @@
+EXTERNAL LIBRARIES THAT SHOULD BE INSTALLED
+#ncurses
+sudo apt-get install libncurses5
+sudo apt-get install ncurses-bin
+sudo apt-get install ncurses-dev
+#boost
+sudo apt-get install libboost1.49-dev
+
+
+
+DEINSTALL ENVIRONMENT VARIABLES OF OTHER (OLDER) VERSIONS OF THE STACK
+sed -i '/IBVS_WORKSPACE/d' ~/.bashrc
+sed -i '/IBVS_STACK/d' ~/.bashrc
+
+
+
+
+NAVIGATE TO WORKSPACE OF ROS (OR CREATE IT)
+#example
+cd ~/workspace/ros
+
+CREATE A FOLDER FOR THE WHOLE STACK APPLICATION
+mkdir cvg_ardrone2_ibvs
+cd cvg_ardrone2_ibvs
+
+CREATION OF THE CATKING WORKSPACE and first built
+#if you have groovy
+source /opt/ros/groovy/setup.bash
+#if you have hydro
+source /opt/ros/hydro/setup.bash
+#if you have indigo
+source /opt/ros/indigo/setup.bash
+#common
+mkdir src
+cd src
+catkin_init_workspace
+cd ..
+catkin_make
+
+
+SOURCERING THE STACK
+source devel/setup.bash
+
+
+DOWNLOAD STACK
+git clone -b catkin https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/stack
+
+
+DOWNLOAD EXT_STACK
+#ardrone_autonomy
+git clone -b catkin https://github.com/AutonomyLab/ardrone_autonomy.git ./src/extStack/ardrone_autonomy
+#ros_opentld
+git clone https://github.com/Ronan0912/ros_opentld.git ./src/extStack/ros_opentld
+
+
+INSTALL THE WORKSPACE -> for the setup.sh
+./src/stack/installation/installers/installWS.sh
+
+
+
+INSTALL THE STACK -> for the launchers and the logs
+cd src/stack
+./installation/installers/installStack.sh
+cd ..
+cd ..
+
+
+#close terminal and reopen it
+
+
+
+
+
+COMPILE STACK
+cd $DRONE_STACK
+source setup.sh
+cd $DRONE_WORKSPACE
+catkin_make
+#we have noticed that it sometimes fails when compiling, because an error in the external package ros_opentld. If it fails, run "catkin_make" again. It solved all our problems from the moment!
+
+
+
+
+
+OPENING STACK with qtcreator
+cd $DRONE_WORKSPACE/src
+rm CMakeLists.txt
+cp /opt/ros/indigo/share/catkin/cmake/toplevel.cmake CMakeLists.txt
+cd ..
+source devel/setup.bash
+qtcreator
+#put the build folder in the correct path!

@@ -52,6 +52,13 @@ The installation follows the same steps needed usually to compile a self-contain
         $ sudo apt-get install libboost1.49-dev
         ```
 
+* Uninstall previous versions of this stack:
+
+	```bash
+	$ sed -i '/IBVS_WORKSPACE/d' ~/.bashrc
+	$ sed -i '/IBVS_STACK/d' ~/.bashrc
+	```
+
 * Create a ROS_WORKSPACE to install the stack and the required external ROS packages and stacks. For example, A ROS_WORKSPACE can be configured in the folder. `~/workspace/ros/cvg_ardrone2_ibvs`. The following steps are advised:
 
         ```bash
@@ -64,37 +71,41 @@ The installation follows the same steps needed usually to compile a self-contain
         $ mkdir cvg_ardrone2_ibvs
         $ cd cvg_ardrone2_ibvs
         $ # initialize ROS workspace using ROS
-	$ #if you use ROS groovy
-        $ rosws init ./ /opt/ros/groovy
-	$ #if you use ROS hydro
-	$ rosws init ./ /opt/ros/hydro
-	$ #if you use ROS indigo
-	$ rosws init ./ /opt/ros/indigo
+	$ # if you have ROS groovy
+	$ source /opt/ros/groovy/setup.bash
+	$ # if you have ROS hydro
+	$ source /opt/ros/hydro/setup.bash
+	$ # if you have ROS indigo
+	$ source /opt/ros/indigo/setup.bash
+	$ # common for all ROS versions
+	$ mkdir src
+	$ cd src
+	$ catkin_init_workspace
+	$ cd ..
+	$ catkin_make
         ```
 
-* Download the required ROS packages using git or rosws:
+* Download the required ROS packages using git:
 
         ```bash
-        $ # create folder where external ROS stacks are downloaded
-        $ rosws set ./extStack
-        $ # set folder to download the ardrone_autonomy ROS package
-        $ rosws set ./extStack/ardrone_autonomy --git https://github.com/AutonomyLab/ardrone_autonomy.git --version=fuerte-devel
-        $ # set folder to download the ROS_OpenTLD ROS package
-        $ rosws set ./extStack/ros_opentld --git https://github.com/Ronan0912/ros_opentld.git
-        $ # set folder to download the cvg_ardrone2_ibvs ROS package
-        $ rosws set ./stack --git https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git
-        $ # download both packages using git, through the rosws command
-        $ rosws update
+	$ # navigate to the ~/workspace/ros/cvg_ardrone2_ibvs
+	$ # download stack
+	$ git clone -b catkin https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/stack
+	$ # download extStack
+	$ # ardrone_autonomy
+	$ git clone -b catkin https://github.com/AutonomyLab/ardrone_autonomy.git ./src/extStack/ardrone_autonomy
+	$ # ros_opentld
+	$ git clone https://github.com/Ronan0912/ros_opentld.git ./src/extStack/ros_opentld
         ```
 
 * Set up the `IBVS_STACK` and `IBVS_WORKSPACE` environment variables. 
 
         ```bash
-        $ # note: ${IBVS_WORKSPACE}='~/workspace/ros/'
-	$ ./stack/installation/installWS.sh
-        $ # note: ${IBVS_STACK}='~/workspace/ros/'
-	$ cd stack
-	$ ./installation/installStack.sh
+        $ # note: ${IBVS_WORKSPACE}='~/workspace/ros/cvg_ardrone2_ibvs'
+	$ ./src/stack/installation/installers/installWS.sh
+        $ # note: ${IBVS_STACK}='~/workspace/ros/cvg_ardrone2_ibvs/src/stack'
+	$ cd src/stack
+	$ ./installation/installers/installStack.sh
 	$ #You have to close the terminal an re-open it, before you continue
         ```
 
@@ -112,44 +123,22 @@ The installation follows the same steps needed usually to compile a self-contain
         $ source setup.sh
         $ rospack profile
         $ rosdep update
-        $ # Compile external ROS packages: ardrone_autonomy
-        $ cd ${IBVS_WORKSPACE}/extStack/ardrone_autonomy/
-        $ # The previous command, should be equivalent to: $ roscd ardrone_autonomy
-	$ # Compile internal libraries of ardrone_autonomy
-        $ ./build_sdk.sh
         ```
 
 * Compile the stack:
 
         ```bash
-        $ cd ${IBVS_STACK}/launch_dir/
-        $ ./rosmake_IBVS_Release.sh
+	$ # Source the stack
+	$ cd ${IBVS_STACK}
+	$ source setup.sh
+	$ # Compile
+	$ cd ${IBVS_WORKSPACE}
+        $ catkin_make
         ```
-* If you run into this compilation problem
+* We have noticed that it sometimes fails when compiling, because an error in the external package ros_opentld. If it fails, run "catkin_make" again. It solved all our problems from the moment!
 
-        ```
-        CMake Error at /usr/share/cmake-2.8/Modules/FindOpenCV.cmake:239 (MESSAGE):
-          OpenCV required but some headers or libs not found.  Please specify it's
-          location with OpenCV_ROOT_DIR env.  variable.
-        Call Stack (most recent call first):
-          CMakeLists.txt:6 (find_package)
-        ```
 
-Then substitute "find_package(OpenCV)" for:
 
-        ```
-        ros_opentld/opentld/build/git-opentld/CMakeLists.txt
-        ros_opentld/tld_tracker/CMakeLists.txt
-        ```
-
-In these files:
-
-        ```
-        IF(NOT OpenCV_FOUND)
-            set(OpenCV_DIR /opt/ros/groovy/share/opencv2/)
-            find_package(OpenCV)
-        ENDIF(NOT OpenCV_FOUND)
-        ```
 
 It is necessary to calibrate the AR Drone 2 camera, either as explained in the {IBVS_STACK}/ext_resources folder, or to copy the sample calibrations files located in {IBVS_STACK}/ext_resources/ardrone2_cameracalibration/camera_info/ardrone_bottom.yaml to the folder ~/.ros/camera_info .
 
@@ -289,8 +278,6 @@ This software stack uses other third-party open-source libraries (some of them a
 - Open Source Computer Vision library ([OpenCV](http://opencv.org/ "OpenCV")), license: `BSD` license, not included in the source of the stack.
 
 - pugixml library ([pugixml](http://pugixml.org/ "pugixml")), original license: `MIT` license, included as source in the stack in the `lib_pugixml` package.
-
-- newmat11 library, a matrix library in C++ ([newmat11](http://www.robertnz.net/nm11.htm "newmat11, a matrix library in C++")), original license: ([newmat11 license](http://www.robertnz.net/nm11.htm#use "newmat11 library license")), included as source in the stack in the `lib_newmat` package.
 
 - other software libraries used by this stack also uses licenses similar to `BSD` and `MIT` licenses: [ncurses](https://www.gnu.org/software/ncurses/ "GNU ncurses") and [boost](http://www.boost.org "boost c++ libraries").
 
