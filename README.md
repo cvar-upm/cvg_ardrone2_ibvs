@@ -45,12 +45,12 @@ The installation follows the same steps needed usually to compile a self-contain
 
 * Install ncurses and the boost libraries in your system.
 
-        ```bash
-        $ sudo apt-get install libncurses5
-        $ sudo apt-get install ncurses-bin
-        $ sudo apt-get install ncurses-dev
-        $ sudo apt-get install libboost1.49-dev
-        ```
+	```bash
+	$ sudo apt-get install libncurses5
+	$ sudo apt-get install ncurses-bin
+	$ sudo apt-get install ncurses-dev
+	$ sudo apt-get install libboost1.49-dev
+	```
 
 * Uninstall previous versions of this stack:
 
@@ -61,16 +61,16 @@ The installation follows the same steps needed usually to compile a self-contain
 
 * Create a ROS_WORKSPACE to install the stack and the required external ROS packages and stacks. For example, A ROS_WORKSPACE can be configured in the folder. `~/workspace/ros/cvg_ardrone2_ibvs`. The following steps are advised:
 
-        ```bash
-        $ # create the ~/workspace/ros/cvg_ardrone2_ibvs folder
-        $ cd ~
-        $ mkdir workspace
-        $ cd workspace
-        $ mkdir ros
-        $ cd ros
-        $ mkdir cvg_ardrone2_ibvs
-        $ cd cvg_ardrone2_ibvs
-        $ # initialize ROS workspace using ROS
+	```bash
+	$ # create the ~/workspace/ros/cvg_ardrone2_ibvs folder
+	$ cd ~
+	$ mkdir workspace
+	$ cd workspace
+	$ mkdir ros
+	$ cd ros
+	$ mkdir cvg_ardrone2_ibvs
+	$ cd cvg_ardrone2_ibvs
+	$ # initialize ROS workspace using ROS
 	$ # if you have ROS groovy
 	$ source /opt/ros/groovy/setup.bash
 	$ # if you have ROS hydro
@@ -83,11 +83,11 @@ The installation follows the same steps needed usually to compile a self-contain
 	$ catkin_init_workspace
 	$ cd ..
 	$ catkin_make
-        ```
+	```
 
 * Download the required ROS packages using git:
 
-        ```bash
+	```bash
 	$ # navigate to the ~/workspace/ros/cvg_ardrone2_ibvs
 	$ # download stack
 	$ git clone -b catkin https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/stack
@@ -96,45 +96,46 @@ The installation follows the same steps needed usually to compile a self-contain
 	$ git clone -b catkin https://github.com/AutonomyLab/ardrone_autonomy.git ./src/extStack/ardrone_autonomy
 	$ # ros_opentld
 	$ git clone https://github.com/Ronan0912/ros_opentld.git ./src/extStack/ros_opentld
-        ```
+	```
 
 * Set up the `IBVS_STACK` and `IBVS_WORKSPACE` environment variables. 
 
-        ```bash
-        $ # note: ${IBVS_WORKSPACE}='~/workspace/ros/cvg_ardrone2_ibvs'
+	```bash
+	$ # note: ${IBVS_WORKSPACE}='~/workspace/ros/cvg_ardrone2_ibvs'
 	$ ./src/stack/installation/installers/installWS.sh
-        $ # note: ${IBVS_STACK}='~/workspace/ros/cvg_ardrone2_ibvs/src/stack'
+	$ # note: ${IBVS_STACK}='~/workspace/ros/cvg_ardrone2_ibvs/src/stack'
 	$ cd src/stack
 	$ ./installation/installers/installStack.sh
 	$ #You have to close the terminal an re-open it, before you continue
-        ```
+	```
 
 * Each time the cvg_ardrone2_ibvs is going to be used, do the following (note that the ROS_WORKSPACE and other ROS environment variables should not be loaded in the .bashrc file or other ubuntu terminal startup files):
 
-        ```bash
-        $ cd ${IBVS_STACK}
-        $ source setup.sh
-        ```
+	```bash
+	$ cd ${IBVS_STACK}
+	$ source setup.sh
+	```
 
 * Final steps installation instructions:
 
-        ```bash
-        $ cd ${IBVS_STACK}
-        $ source setup.sh
-        $ rospack profile
-        $ rosdep update
-        ```
+	```bash
+	$ cd ${IBVS_STACK}
+	$ source setup.sh
+	$ rospack profile
+	$ rosdep update
+	```
 
 * Compile the stack:
 
-        ```bash
+	```bash
 	$ # Source the stack
 	$ cd ${IBVS_STACK}
 	$ source setup.sh
 	$ # Compile
 	$ cd ${IBVS_WORKSPACE}
-        $ catkin_make
-        ```
+	$ catkin_make
+	```
+
 * We have noticed that it sometimes fails when compiling, because an error in the external package ros_opentld. If it fails, run "catkin_make" again. It solved all our problems from the moment!
 
 
@@ -193,10 +194,10 @@ NOTE: all the launchfiles open a separate terminal with multiple tabs, where eac
 
 The launch scripts have to be called using the following sintax in the shell terminal: 
 
-        ```bash
-        $ cd ${IBVS_STACK}/launch_dir
-        $ ./parrot_IBVSController_launcher_Release.sh
-        ```
+	```bash
+	$ cd ${IBVS_STACK}/launch_dir
+	$ ./parrot_IBVSController_launcher_Release.sh
+	```
 
 ### Interaction with UI
 
