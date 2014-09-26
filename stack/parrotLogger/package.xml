@@ -1,0 +1,24 @@
+<package>
+	<name>parrotLogger</name>
+	<version>1.0.0</version>
+	<description>
+    		This package is parrotLogger.
+	</description>
+	<author email="jespestana@gmail.com">Jesus Pestana Puerta</author>
+	<maintainer email="jespestana@gmail.com">Jesus Pestana Puerta</maintainer>
+  	<license>BSD</license>
+	<url>http://ros.org/wiki/parrotLogger</url>
+
+  	<buildtool_depend>catkin</buildtool_depend>
+
+
+  	<build_depend>atlante</build_depend>
+  	<build_depend>droneLogger</build_depend>
+
+  	<run_depend>atlante</run_depend>
+  	<run_depend>droneLogger</run_depend>
+
+
+</package>
+
+

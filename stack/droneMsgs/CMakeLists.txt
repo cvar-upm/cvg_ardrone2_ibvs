@@ -85,10 +85,3 @@ catkin_package(
 
 include_directories(${DRONEMSGS_INCLUDE_DIR})
 include_directories(${catkin_INCLUDE_DIRS})
-
-
-
-
-
-
-

@@ -1,0 +1,32 @@
+<package>
+	<name>parrotController</name>
+	<version>1.0.0</version>
+	<description>
+    		This package is parrotController.
+	</description>
+	<author email="jespestana@gmail.com">Jesus Pestana Puerta</author>
+	<maintainer email="jespestana@gmail.com">Jesus Pestana Puerta</maintainer>
+  	<license>BSD</license>
+	<url>http://ros.org/wiki/parrotController</url>
+
+  	<buildtool_depend>catkin</buildtool_depend>
+
+
+  	<build_depend>atlante</build_depend>
+  	<build_depend>parrotDriver</build_depend>
+  	<build_depend>droneController</build_depend>
+  	<build_depend>droneStateEstimator</build_depend>
+  	<build_depend>droneOpenTLDInterface</build_depend>
+  	<build_depend>droneLogger</build_depend>
+
+  	<run_depend>atlante</run_depend>
+  	<run_depend>parrotDriver</run_depend>
+  	<run_depend>droneController</run_depend>
+  	<run_depend>droneStateEstimator</run_depend>
+  	<run_depend>droneOpenTLDInterface</run_depend>
+  	<run_depend>droneLogger</run_depend>
+
+
+</package>
+
+

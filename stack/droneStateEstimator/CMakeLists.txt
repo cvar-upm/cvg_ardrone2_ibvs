@@ -120,6 +120,7 @@ include_directories(${catkin_INCLUDE_DIRS})
 
 add_library(droneStateEstimator ${DRONESTATEESTIMATOR_SOURCE_FILES} ${DRONESTATEESTIMATOR_HEADER_FILES})
 add_dependencies(droneStateEstimator ${catkin_EXPORTED_TARGETS})
+add_dependencies(droneStateEstimator droneStateEstimator_gencpp)
 target_link_libraries(droneStateEstimator ${OpenCV_LIBS})
 target_link_libraries(droneStateEstimator ${catkin_LIBRARIES})
 

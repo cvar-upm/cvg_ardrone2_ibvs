@@ -1,0 +1,34 @@
+<package>
+	<name>droneController</name>
+	<version>1.0.0</version>
+	<description>
+    		This package is droneController.
+	</description>
+	<author email="jespestana@gmail.com">Jesus Pestana Puerta</author>
+	<maintainer email="jespestana@gmail.com">Jesus Pestana Puerta</maintainer>
+  	<license>BSD</license>
+	<url>http://ros.org/wiki/droneController</url>
+
+  	<buildtool_depend>catkin</buildtool_depend>
+
+
+	<build_depend>message_generation</build_depend>	
+  	<build_depend>roscpp</build_depend>
+  	<build_depend>std_msgs</build_depend>
+  	<build_depend>atlante</build_depend>
+  	<build_depend>droneModule</build_depend>
+  	<build_depend>droneMsgs</build_depend>
+  	<build_depend>droneOpenTLDInterface</build_depend>
+
+	<run_depend>message_runtime</run_depend>
+	<run_depend>roscpp</run_depend>
+  	<run_depend>std_msgs</run_depend>
+  	<run_depend>atlante</run_depend>
+  	<run_depend>droneModule</run_depend>
+  	<run_depend>droneMsgs</run_depend>
+  	<run_depend>droneOpenTLDInterface</run_depend>
+
+
+</package>
+
+

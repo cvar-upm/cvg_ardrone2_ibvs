@@ -1,0 +1,28 @@
+<package>
+	<name>droneBrain</name>
+	<version>1.0.0</version>
+	<description>
+    		This package is droneBrain.
+	</description>
+	<author email="jespestana@gmail.com">Jesus Pestana Puerta</author>
+	<maintainer email="jespestana@gmail.com">Jesus Pestana Puerta</maintainer>
+  	<license>BSD</license>
+	<url>http://ros.org/wiki/droneBrain</url>
+
+  	<buildtool_depend>catkin</buildtool_depend>
+
+
+  	<build_depend>droneController</build_depend>
+  	<build_depend>droneStateEstimator</build_depend>
+  	<build_depend>droneOpenTLDInterface</build_depend>
+  	<build_depend>ardrone_autonomy</build_depend>
+
+	<run_depend>droneController</run_depend>
+  	<run_depend>droneStateEstimator</run_depend>
+  	<run_depend>droneOpenTLDInterface</run_depend>
+  	<run_depend>ardrone_autonomy</run_depend>
+
+
+</package>
+
+
