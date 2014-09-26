@@ -29,7 +29,7 @@
 		<arg name="image_topic" default="/$(arg drone_id_namespace)/ardrone/front/image_raw"/>
 
 	<!-- Nodes -->
-		<node name="ros_tld_tracker_node" pkg="tld_tracker" type="ros_tld_tracker_node" output="screen">
+		<node name="ros_tld_tracker_node" pkg="tld_tracker" type="tld_tracker_node" output="screen">
 			<!-- remap of topics -->
 			<remap from="image" to="$(arg image_topic)"/>
 			<remap from="bounding_box" to="tld_gui_bb"/>
@@ -50,7 +50,7 @@
 			<param name="correctBB" value="false" type="bool"/>
 		</node>
 
-		<node name="ros_tld_gui_node" pkg="tld_tracker" type="ros_tld_gui_node" output="screen" respawn="true">
+		<node name="ros_tld_gui_node" pkg="tld_tracker" type="tld_gui_node" output="screen" respawn="true">
 			<remap from="image" to="$(arg image_topic)"/>
 			<remap from="tracked_object" to="tld_tracked_object"/>
 			<remap from="fps_tracker" to="tld_fps"/>
