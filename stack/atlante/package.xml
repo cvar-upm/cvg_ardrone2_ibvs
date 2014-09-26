@@ -1,0 +1,18 @@
+<package>
+	<name>atlante</name>
+	<version>1.0.0</version>
+	<description>
+    		This package is atlante.
+	</description>
+	<author email="jl.sanchez@upm.es">Ignacio Mellado Bataller</author>
+	<maintainer email="jl.sanchez@upm.es">Jose Luis Sanchez-Lopez</maintainer>
+  	<license>BSD</license>
+	<url>http://ros.org/wiki/atlante</url>
+
+  	<buildtool_depend>catkin</buildtool_depend>
+
+
+
+</package>
+
+
