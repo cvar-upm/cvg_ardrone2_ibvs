@@ -64,12 +64,17 @@ set(PARROTDRIVER_HEADER_FILES
 	)
 
 
+#OpenCV
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
 
 #include_directories(src/include/)
 #rosbuild_add_library(parrotDriver src/Drone.cpp)
 
 include_directories(${PARROTDRIVER_INCLUDE_DIR})
 rosbuild_add_library(parrotDriver ${PARROTDRIVER_SOURCE_FILES} ${PARROTDRIVER_HEADER_FILES})
+target_link_libraries(parrotDriver ${OpenCV_LIBS})
 
 
 #rosbuild_add_executable(parrotInterface src/interface.cpp src/Drone.cpp src/Drone.h)

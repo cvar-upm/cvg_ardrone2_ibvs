@@ -73,6 +73,9 @@ set(REFERENCEFRAMES_HEADER_FILES
 	)
 
 
+#openCV
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 #### atlante lib #######
 
@@ -92,7 +95,7 @@ set(REFERENCEFRAMES_HEADER_FILES
 #Parrot controller compile
 include_directories(${REFERENCEFRAMES_INCLUDE_DIR})
 rosbuild_add_library(referenceFrames ${REFERENCEFRAMES_SOURCE_FILES} ${REFERENCEFRAMES_HEADER_FILES})
-
+target_link_libraries(referenceFrames ${OpenCV_LIBS})
 
 
 

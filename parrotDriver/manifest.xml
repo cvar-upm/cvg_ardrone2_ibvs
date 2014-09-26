@@ -13,7 +13,9 @@
   
   <depend package="ardrone_autonomy"/>
   <depend package="sensor_msgs"/>
+<!--
   <depend package="opencv2"/>
+-->
   <depend package="cv_bridge"/>
   <depend package="roscpp"/>
   <depend package="std_msgs"/>

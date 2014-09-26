@@ -14,7 +14,9 @@
   <depend package="droneMsgs"/>
   <depend package="droneModule"/>
   
+<!--
   <depend package="opencv2"/>
+-->
   
   <depend package="referenceFrames"/>
   

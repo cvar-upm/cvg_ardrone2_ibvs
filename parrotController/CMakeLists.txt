@@ -51,9 +51,15 @@ find_package(Boost COMPONENTS system filesystem REQUIRED)
 include_directories( ${Boost_INCLUDE_DIR} )
 link_directories( ${Boost_LIBRARY_DIR} )
 
+#OpenCV
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+
 set(PARROTIBVSCONTROLLER_SOURCE_FILES   src/sources/IBVScontrollerNodeMain.cpp )
 rosbuild_add_executable(parrotIBVSController ${PARROTIBVSCONTROLLER_SOURCE_FILES})
 target_link_libraries(parrotIBVSController boost_system ${Boost_LIBRARIES})
+target_link_libraries(parrotIBVSController ${OpenCV_LIBS})
 
 set(OTHER_FILES
         manifest.xml

@@ -16,8 +16,9 @@
   
   <depend package="localizationLib"/>
   
+<!--
   <depend package="opencv2"/>
-  
+ --> 
   
    <export>
       <cpp cflags="-I${prefix}/src/include" lflags="-L${prefix}/lib -lreferenceFrames"/>

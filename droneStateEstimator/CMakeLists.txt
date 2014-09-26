@@ -112,12 +112,16 @@ set(DRONESTATEESTIMATOR_HEADER_FILES
 	)
 
 
-
+#OpenCV
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 
 #Parrot controller compile
 include_directories(${DRONESTATEESTIMATOR_INCLUDE_DIR})
 rosbuild_add_library(droneStateEstimator ${DRONESTATEESTIMATOR_SOURCE_FILES} ${DRONESTATEESTIMATOR_HEADER_FILES})
+
+target_link_libraries(droneStateEstimator ${OpenCV_LIBS})
 
 set(OTHER_FILES
         manifest.xml

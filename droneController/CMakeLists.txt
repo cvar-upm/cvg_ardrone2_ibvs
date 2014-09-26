@@ -79,6 +79,9 @@ set(DRONEIBVSCONTROLLER_SOURCE_FILES
 #	${PROJECT_SOURCE_DIR}/atlante/lib/gcc/libatlante.a
 #	)
 
+#OpenCV
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
 
 #add include directories to the serch path!!
 rosbuild_add_boost_directories()
@@ -96,7 +99,7 @@ include_directories(${PARROTCONTROLLER_INCLUDE_DIR})
 rosbuild_add_library(droneController    ${DRONEIBVSCONTROLLER_SOURCE_FILES}
                                         ${DRONEIBVSCONTROLLER_HEADER_FILES}
                                         )
-
+target_link_libraries(droneController ${OpenCV_LIBS})
 
 
 

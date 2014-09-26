@@ -63,8 +63,13 @@ The installation follows the same steps needed usually to compile a self-contain
         $ cd ros
         $ mkdir cvg_ardrone2_ibvs
         $ cd cvg_ardrone2_ibvs
-        $ # initialize ROS workspace using ROS groovy
+        $ # initialize ROS workspace using ROS
+	$ #if you use ROS groovy
         $ rosws init ./ /opt/ros/groovy
+	$ #if you use ROS hydro
+	$ rosws init ./ /opt/ros/hydro
+	$ #if you use ROS indigo
+	$ rosws init ./ /opt/ros/indigo
         ```
 
 * Download the required ROS packages using git or rosws:
@@ -85,10 +90,12 @@ The installation follows the same steps needed usually to compile a self-contain
 * Set up the `IBVS_STACK` and `IBVS_WORKSPACE` environment variables. 
 
         ```bash
-        $ # note: ${ROS_WORKSPACE}='~/workspace/ros/'
-        $ # copy ${ROS_WORKSPACE}/stack/installWS.sh to ${ROS_WORKSPACE}/installWS.sh
-        $ # run in ${ROS_WORKSPACE}: ./installWS.sh
-        $ # run in ${ROS_WORKSPACE}/stack: ./installStack.sh
+        $ # note: ${IBVS_WORKSPACE}='~/workspace/ros/'
+	$ ./stack/installation/installWS.sh
+        $ # note: ${IBVS_STACK}='~/workspace/ros/'
+	$ cd stack
+	$ ./installation/installStack.sh
+	$ #You have to close the terminal an re-open it, before you continue
         ```
 
 * Each time the cvg_ardrone2_ibvs is going to be used, do the following (note that the ROS_WORKSPACE and other ROS environment variables should not be loaded in the .bashrc file or other ubuntu terminal startup files):
@@ -106,8 +113,9 @@ The installation follows the same steps needed usually to compile a self-contain
         $ rospack profile
         $ rosdep update
         $ # Compile external ROS packages: ardrone_autonomy
-        $ cd ../extStack/ardrone_autonomy/
-        $ roscd ardrone_autonomy
+        $ cd ${IBVS_WORKSPACE}/extStack/ardrone_autonomy/
+        $ # The previous command, should be equivalent to: $ roscd ardrone_autonomy
+	$ # Compile internal libraries of ardrone_autonomy
         $ ./build_sdk.sh
         ```
 
