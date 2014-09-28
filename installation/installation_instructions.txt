@@ -3,8 +3,6 @@ EXTERNAL LIBRARIES THAT SHOULD BE INSTALLED
 sudo apt-get install libncurses5
 sudo apt-get install ncurses-bin
 sudo apt-get install ncurses-dev
-#boost
-sudo apt-get install libboost1.49-dev
 
 
 
