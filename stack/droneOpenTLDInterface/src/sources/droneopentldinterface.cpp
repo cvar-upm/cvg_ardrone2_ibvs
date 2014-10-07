@@ -49,22 +49,28 @@ void DroneOpenTLDInterface::boundingBoxSubCallback(const tld_msgs::BoundingBox::
     inside_bb_callback_function = true;
 #endif // DRONEOPENTLDINTERFACE_TEST_CALLBACK_GET_DATA_CORRUPTION
 
-    bounding_box = (*msg);
+    // modified to comply with this ros_opentld commit:
+    //   https://github.com/Ronan0912/ros_opentld/commit/f07234fee2a3a6a0373a4312163e63d2d935135c
+    if ( (msg->height==1) && (msg->width==1) &&
+         (msg->x     ==1) && (msg->y    ==1) ) {
+        return;
+    } else {
+        bounding_box = (*msg);
 
-    // updating OpenTLD status information
-    last_time_recieved_bb = ros::Time::now();
-    is_object_on_frame = true;
+        // updating OpenTLD status information
+        last_time_recieved_bb = ros::Time::now();
+        is_object_on_frame = true;
 
 #ifdef DRONEOPENTLDINTERFACE_TEST_CALLBACK_GET_DATA_CORRUPTION
-    usleep(100e3);
-    inside_bb_callback_function = false;
+        usleep(100e3);
+        inside_bb_callback_function = false;
 #endif // DRONEOPENTLDINTERFACE_TEST_CALLBACK_GET_DATA_CORRUPTION
 
-    run_timestamp = bounding_box.header.stamp- init_timestamp;
-    isObjectOnFrame();
-    updateOpenTLDLogMsgStr();
-
-    return;
+        run_timestamp = bounding_box.header.stamp- init_timestamp;
+        isObjectOnFrame();
+        updateOpenTLDLogMsgStr();
+        return;
+    }
 }
 
 void DroneOpenTLDInterface::fpsSubCallback(const std_msgs::Float32::ConstPtr &msg) {
@@ -78,7 +84,7 @@ void DroneOpenTLDInterface::fpsSubCallback(const std_msgs::Float32::ConstPtr &ms
     ros::Time current_time = ros::Time::now();
     ros::Duration elapsed_time = current_time - last_time_recieved_bb;
 
-    if ( elapsed_time.toSec() > 3.0*(25.0/15.0)*(1.0/fps.data) )
+    if ( elapsed_time.toSec() > 3.0*(25.0/15.0)*(1.0/DRONEOPENTLDINTERFACE_TLD_EXPECTED_FPSCHANNEL_RATE) )
         is_object_on_frame = false;
 
     return;

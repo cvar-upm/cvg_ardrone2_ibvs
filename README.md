@@ -46,9 +46,15 @@ The installation follows the same steps needed usually to compile a self-contain
 * Install ncurses and the boost libraries in your system.
 
 	```bash
-	$ sudo apt-get install libncurses5
-	$ sudo apt-get install ncurses-bin
-	$ sudo apt-get install ncurses-dev
+	$ # For our terminal interface	
+	$ sudo apt-get install libncurses5 ncurses-bin ncurses-dev
+	$ # Dependencies of the AR Drone SDK / ardrone_autonomy package
+	$ sudo apt-get install libsdl1.2-dev libudev-dev libiw-dev 
+	$ # Dependencies require to run the official SDK release, see:
+	$ #   Official SDK website: https://projects.ardrone.org/
+	$ #   Ubuntu SDK instructions: https://projects.ardrone.org/boards/1/topics/show/5942
+	$ #   The "adrone_navigation" example is very useful to check that everything is working in your AR Drone
+	$ sudo apt-get install libgtk2.0-dev libsdl1.2-dev libiw-dev libxml2-dev libudev-dev libncurses5-dev libncursesw5-dev
 	```
 
 * Uninstall previous versions of this stack:
@@ -122,6 +128,8 @@ The installation follows the same steps needed usually to compile a self-contain
 	$ source setup.sh
 	$ rospack profile
 	$ rosdep update
+	$ cd ${IBVS_WORKSPACE}/src/extStack
+	$ rosdep install ardrone_autonomy
 	```
 
 * Compile the stack:
@@ -135,12 +143,9 @@ The installation follows the same steps needed usually to compile a self-contain
 	$ catkin_make
 	```
 
-* We have noticed that it sometimes fails when compiling, because an error in the external package ros_opentld. If it fails, run "catkin_make" again. It solved all our problems from the moment!
+* We have noticed that it sometimes fails when compiling, because an error in the external package ros_opentld. If it fails, run "catkin_make" again. It solved all our problems for the moment!
 
-
-
-
-It is necessary to calibrate the AR Drone 2 camera, either as explained in the {IBVS_STACK}/ext_resources folder, or to copy the sample calibrations files located in {IBVS_STACK}/ext_resources/ardrone2_cameracalibration/camera_info/ardrone_bottom.yaml to the folder ~/.ros/camera_info .
+* It is necessary to calibrate the AR Drone 2 camera, either as explained in the {IBVS_STACK}/ext_resources folder, or to copy the sample calibrations files located in ${IBVS_STACK}/ext_resources/ardrone2_cameracalibration/camera_info/ardrone_front.yaml and ${IBVS_STACK}/ext_resources/ardrone2_cameracalibration/camera_info/ardrone_bottom.yaml to the folder ~/.ros/camera_info .
 
 
 ## Coordinate Frames
