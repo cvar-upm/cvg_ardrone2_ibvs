@@ -229,6 +229,7 @@ Simplified instructions to work with the controller:
       'y': land
       'h': enter hovering mode
       'm': enter move mode
+      'space bar': activate/deactivate emergency mode
 ```
 
     3. In move mode:
