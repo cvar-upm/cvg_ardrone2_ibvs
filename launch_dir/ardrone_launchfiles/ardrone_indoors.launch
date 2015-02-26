@@ -93,7 +93,7 @@
 			-->
 
 			<!-- https://github.com/AutonomyLab/ardrone_autonomy#other-parameters -->
-			<param name="do_imu_caliberation" value="false" />
+			<param name="do_imu_calibration" value="false" />
 			<param name="tf_prefix" value="" />
 			
 			
