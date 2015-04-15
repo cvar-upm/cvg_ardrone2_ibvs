@@ -44,9 +44,9 @@ DOWNLOAD STACK
 git clone -b catkin https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/stack
 
 
-DOWNLOAD EXT_STACK
+DOWNLOAD EXT_STACK -> For ROS INDIGO. If you are not using ROS Indigo, you should download other branches
 #ardrone_autonomy
-git clone -b catkin https://github.com/AutonomyLab/ardrone_autonomy.git ./src/extStack/ardrone_autonomy
+git clone -b indigo-devel https://github.com/AutonomyLab/ardrone_autonomy.git ./src/extStack/ardrone_autonomy
 #ros_opentld
 git clone https://github.com/Ronan0912/ros_opentld.git ./src/extStack/ros_opentld
 
