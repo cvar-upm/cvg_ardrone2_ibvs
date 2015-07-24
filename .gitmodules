@@ -1,0 +1,52 @@
+[submodule "stack/droneDriver/DriveParrotARDrone/ardrone_autonomy"]
+	path = stack/droneDriver/DriveParrotARDrone/ardrone_autonomy
+	url = https://github.com/AutonomyLab/ardrone_autonomy.git
+	branch = indigo-devel
+[submodule "stack/droneDriver/DriveParrotARDrone/driverParrotARDroneROSModule"]
+	path = stack/droneDriver/DriveParrotARDrone/driverParrotARDroneROSModule
+	url = https://bitbucket.org/joselusl/driverparrotardronerosmodule.git
+	branch = master
+[submodule "stack/droneIBVSControl/droneIBVSController"]
+	path = stack/droneIBVSControl/droneIBVSController
+	url = https://bitbucket.org/hridaybavle/droneibvscontroller.git
+	branch = master
+[submodule "stack/droneIBVSControl/droneIBVSControllerROSModule"]
+	path = stack/droneIBVSControl/droneIBVSControllerROSModule
+	url = https://bitbucket.org/hridaybavle/droneibvscontrollerrosmodule.git
+	branch = master
+[submodule "stack/droneIBVSControl/droneIBVSInterfaceROS"]
+	path = stack/droneIBVSControl/droneIBVSInterfaceROS
+	url = https://bitbucket.org/hridaybavle/droneibvsinterfaceros.git
+	branch = master
+[submodule "stack/dronePerception/openTLD/droneOpenTLDTranslatorROS"]
+	path = stack/dronePerception/openTLD/droneOpenTLDTranslatorROS
+	url = https://bitbucket.org/hridaybavle/droneopentldtranslatorros.git
+	branch = master
+[submodule "stack/dronePerception/openTLD/ros_opentld"]
+	path = stack/dronePerception/openTLD/ros_opentld
+	url = https://github.com/Ronan0912/ros_opentld.git
+	branch = master
+[submodule "stack/droneStackBasics/droneModuleInterfaceROS"]
+	path = stack/droneStackBasics/droneModuleInterfaceROS
+	url = https://bitbucket.org/jespestana/dronemoduleinterfaceros.git
+	branch = master
+[submodule "stack/droneStackBasics/droneModuleROS"]
+	path = stack/droneStackBasics/droneModuleROS
+	url = https://bitbucket.org/joselusl/dronemoduleros.git
+	branch = master
+[submodule "stack/droneStackBasics/droneMsgsROS"]
+	path = stack/droneStackBasics/droneMsgsROS
+	url = https://bitbucket.org/joselusl/dronemsgsros.git
+	branch = master
+[submodule "stack/HMI/droneInterfaceROSModule"]
+	path = stack/HMI/droneInterfaceROSModule
+	url = https://bitbucket.org/joselusl/droneinterfacerosmodule.git
+	branch = master
+[submodule "stack/libraries/lib_cvgutils"]
+	path = stack/libraries/lib_cvgutils
+	url = https://bitbucket.org/jespestana/lib_cvgutils.git
+	branch = master
+[submodule "stack/libraries/lib_pugixml"]
+	path = stack/libraries/lib_pugixml
+	url = https://bitbucket.org/joselusl/lib_pugixml.git
+	branch = master
