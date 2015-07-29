@@ -13,7 +13,7 @@
 [submodule "stack/droneIBVSControl/droneIBVSControllerROSModule"]
 	path = stack/droneIBVSControl/droneIBVSControllerROSModule
 	url = https://bitbucket.org/hridaybavle/droneibvscontrollerrosmodule.git
-	branch = master
+	branch = IBVS
 [submodule "stack/dronePerception/openTLD/droneOpenTLDTranslatorROS"]
 	path = stack/dronePerception/openTLD/droneOpenTLDTranslatorROS
 	url = https://bitbucket.org/hridaybavle/droneopentldtranslatorros.git
