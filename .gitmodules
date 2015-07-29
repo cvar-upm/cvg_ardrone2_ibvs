@@ -14,10 +14,6 @@
 	path = stack/droneIBVSControl/droneIBVSControllerROSModule
 	url = https://bitbucket.org/hridaybavle/droneibvscontrollerrosmodule.git
 	branch = master
-[submodule "stack/droneIBVSControl/droneIBVSInterfaceROS"]
-	path = stack/droneIBVSControl/droneIBVSInterfaceROS
-	url = https://bitbucket.org/hridaybavle/droneibvsinterfaceros.git
-	branch = master
 [submodule "stack/dronePerception/openTLD/droneOpenTLDTranslatorROS"]
 	path = stack/dronePerception/openTLD/droneOpenTLDTranslatorROS
 	url = https://bitbucket.org/hridaybavle/droneopentldtranslatorros.git
@@ -49,4 +45,8 @@
 [submodule "stack/libraries/lib_pugixml"]
 	path = stack/libraries/lib_pugixml
 	url = https://bitbucket.org/joselusl/lib_pugixml.git
+	branch = master
+[submodule "stack/droneIBVSControl/droneTrackerEyeROSModule"]
+	path = stack/droneIBVSControl/droneTrackerEyeROSModule
+	url = https://bitbucket.org/hridaybavle/dronetrackereyerosmodule.git
 	branch = master
