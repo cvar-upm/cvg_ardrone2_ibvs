@@ -37,7 +37,7 @@
 [submodule "stack/HMI/droneInterfaceROSModule"]
 	path = stack/HMI/droneInterfaceROSModule
 	url = https://bitbucket.org/joselusl/droneinterfacerosmodule.git
-	branch = master
+	branch = IBVS
 [submodule "stack/libraries/lib_cvgutils"]
 	path = stack/libraries/lib_cvgutils
 	url = https://bitbucket.org/jespestana/lib_cvgutils.git
