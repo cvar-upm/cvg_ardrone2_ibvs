@@ -50,3 +50,15 @@
 	path = stack/droneIBVSControl/droneTrackerEyeROSModule
 	url = https://bitbucket.org/hridaybavle/dronetrackereyerosmodule.git
 	branch = master
+[submodule "stack/droneLogging/droneLoggerROSModule"]
+	path = stack/droneLogging/droneLoggerROSModule
+	url = https://bitbucket.org/jespestana/droneloggerrosmodule.git
+	branch = IBVS
+[submodule "stack/droneLogging/lib_cvglogger"]
+	path = stack/droneLogging/lib_cvglogger
+	url = https://bitbucket.org/jespestana/lib_cvglogger.git
+	branch = master
+[submodule "stack/droneLogging/lib_cvgloggerROS"]
+	path = stack/droneLogging/lib_cvgloggerROS
+	url = https://bitbucket.org/jespestana/lib_cvgloggerros.git
+	branch = master
