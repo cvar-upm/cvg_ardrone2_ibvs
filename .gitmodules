@@ -5,7 +5,7 @@
 [submodule "stack/droneDriver/DriveParrotARDrone/driverParrotARDroneROSModule"]
 	path = stack/droneDriver/DriveParrotARDrone/driverParrotARDroneROSModule
 	url = https://bitbucket.org/joselusl/driverparrotardronerosmodule.git
-	branch = master
+	branch = IBVS
 [submodule "stack/droneIBVSControl/droneIBVSController"]
 	path = stack/droneIBVSControl/droneIBVSController
 	url = https://bitbucket.org/hridaybavle/droneibvscontroller.git
@@ -25,7 +25,7 @@
 [submodule "stack/droneStackBasics/droneModuleInterfaceROS"]
 	path = stack/droneStackBasics/droneModuleInterfaceROS
 	url = https://bitbucket.org/jespestana/dronemoduleinterfaceros.git
-	branch = master
+	branch = IBVS
 [submodule "stack/droneStackBasics/droneModuleROS"]
 	path = stack/droneStackBasics/droneModuleROS
 	url = https://bitbucket.org/joselusl/dronemoduleros.git
@@ -33,7 +33,7 @@
 [submodule "stack/droneStackBasics/droneMsgsROS"]
 	path = stack/droneStackBasics/droneMsgsROS
 	url = https://bitbucket.org/joselusl/dronemsgsros.git
-	branch = master
+	branch = IBVS
 [submodule "stack/HMI/droneInterfaceROSModule"]
 	path = stack/HMI/droneInterfaceROSModule
 	url = https://bitbucket.org/joselusl/droneinterfacerosmodule.git
