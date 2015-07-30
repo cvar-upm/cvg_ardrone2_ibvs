@@ -62,3 +62,19 @@
 	path = stack/droneLogging/lib_cvgloggerROS
 	url = https://bitbucket.org/jespestana/lib_cvgloggerros.git
 	branch = master
+[submodule "stack/droneSelfLocalization/droneOdometryPoseEstimator/droneEKFStateEstimator"]
+	path = stack/droneSelfLocalization/droneOdometryPoseEstimator/droneEKFStateEstimator
+	url = https://bitbucket.org/jespestana/droneekfstateestimator.git
+	branch = master
+[submodule "stack/droneSelfLocalization/droneOdometryPoseEstimator/droneEKFStateEstimatorROSModule"]
+	path = stack/droneSelfLocalization/droneOdometryPoseEstimator/droneEKFStateEstimatorROSModule
+	url = https://bitbucket.org/jespestana/droneekfstateestimatorrosmodule.git
+	branch = master
+[submodule "stack/libraries/lib_cvgekf"]
+	path = stack/libraries/lib_cvgekf
+	url = https://bitbucket.org/joselusl/lib_cvgekf.git
+	branch = master
+[submodule "stack/libraries/referenceFrames"]
+	path = stack/libraries/referenceFrames
+	url = https://bitbucket.org/joselusl/referenceframes.git
+	branch = master
