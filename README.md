@@ -41,7 +41,7 @@ This driver has been tested on Linux machines running Ubuntu 14.10 (64 bit). How
 
 ### Installation Steps
 
-The installation follows the same steps needed usually to compile a self-contained ROS stack.
+The installation follows the same steps needed usually to compile a self-contained ROS stack. You can also refer /installation/installation_instructions.txt for installing the stack
 
 * Install ncurses and the boost libraries in your system.
 
@@ -68,23 +68,18 @@ The installation follows the same steps needed usually to compile a self-contain
 
 	```bash
 	$ # create the ~/workspace/ros/cvg_ardrone2_ibvs folder
-	$ cd ~
-	$ mkdir workspace
-	$ cd workspace
-	$ mkdir ros
-	$ cd ros
-	$ mkdir cvg_ardrone2_ibvs
-	$ cd cvg_ardrone2_ibvs
+	$ mkdir -p ~/workspace/ros/cvg_ardrone2_ibvs && cd $_
 	$ # initialize ROS workspace using ROS
-	$ # if you have ROS groovy
+	$ # if you have ROS groovy then
 	$ source /opt/ros/groovy/setup.bash
-	$ # if you have ROS hydro
+	$ # else if you have ROS hydro then
 	$ source /opt/ros/hydro/setup.bash
-	$ # if you have ROS indigo
+	$ # else if you have ROS indigo then
 	$ source /opt/ros/indigo/setup.bash
+	$ # else if you have ROS jade then
+	$ source /opt/ros/jade/setup.bash
 	$ # common for all ROS versions
-	$ mkdir src
-	$ cd src
+	$ mkdir src && cd $_
 	$ catkin_init_workspace
 	$ cd ..
 	$ catkin_make
@@ -95,7 +90,7 @@ The installation follows the same steps needed usually to compile a self-contain
 	```bash
 	$ # navigate to the ~/workspace/ros/cvg_ardrone2_ibvs
 	$ # download stack
-	$ git clone -b temp https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/quadrotor_stack
+	$ git clone -b master https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/quadrotor_stack
 	```
 
 * Set up the `IBVS_STACK` and `IBVS_WORKSPACE` environment variables. 
@@ -106,14 +101,14 @@ The installation follows the same steps needed usually to compile a self-contain
 	$ # note: ${IBVS_STACK}='~/workspace/ros/cvg_ardrone2_ibvs/src/quadrotor_stack'
 	$ cd src/quadrotor_stack
 	$ ./installation/installers/installStack.sh
-	$ #You have to close the terminal an re-open it, before you continue
+	$ #Source bash
+	$ source ~/.bashrc
 	```
 
 * Each time the cvg_ardrone2_ibvs is going to be used, do the following (note that the ROS_WORKSPACE and other ROS environment variables should not be loaded in the .bashrc file or other ubuntu terminal startup files):
 
 	```bash
-	$ cd ${IBVS_STACK}
-	$ source setup.sh
+	$ source ${IBVS_STACK}/setup.sh
 	```
 
 
@@ -121,19 +116,14 @@ The installation follows the same steps needed usually to compile a self-contain
 
        ```bash
 	$ cd ${IBVS_STACK}
-	$ #set to true packages required in installation/configSubmodules.cfg
-	$ #if the packages are not already defined in the stack run script to add submodules
-	$ ./installation/gitSubmoduleAdd.sh installation/configSubmodules.cfg
-	$ #if the packages are already defined in the stack run script to init submodules
-	$ ./installation/gitSubmoduleUpdateInit.sh installation/configSubmodules.cfg
+	$ git subodule update --init
 	```
 
 * Compile the stack:
 
 	```bash
 	$ # Source the stack
-	$ cd ${IBVS_STACK}
-	$ source setup.sh
+	$ source ${IBVS_STACK}/setup.sh
 	$ # Compile
 	$ cd ${IBVS_WORKSPACE}
 	$ catkin_make

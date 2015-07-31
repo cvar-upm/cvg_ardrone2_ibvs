@@ -18,19 +18,19 @@ NAVIGATE TO WORKSPACE OF ROS (OR CREATE IT)
 cd ~/workspace/ros
 
 CREATE A FOLDER FOR THE WHOLE STACK APPLICATION
-mkdir cvg_ardrone2_ibvs
-cd cvg_ardrone2_ibvs
+mkdir -p ~/workspace/ros/cvg_ardrone2_ibvs && cd $_
 
 CREATION OF THE CATKING WORKSPACE and first built
-#if you have groovy
+ # if you have ROS groovy then
 source /opt/ros/groovy/setup.bash
-#if you have hydro
+# else if you have ROS hydro then
 source /opt/ros/hydro/setup.bash
-#if you have indigo
+# else if you have ROS indigo then
 source /opt/ros/indigo/setup.bash
+# else if you have ROS jade then
+source /opt/ros/jade/setup.bash
 #common
-mkdir src
-cd src
+mkdir src && cd $_
 catkin_init_workspace
 cd ..
 catkin_make
@@ -41,12 +41,11 @@ source devel/setup.bash
 
 
 DOWNLOAD STACK
-git clone -b catkin https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/quadrotor_stack
+git clone -b master https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/quadrotor_stack
 
 
 INSTALL THE WORKSPACE -> for the setup.sh
 ./src/stack/installation/installers/installWS.sh
-
 
 
 INSTALL THE STACK -> for the launchers and the logs
@@ -58,13 +57,7 @@ source ~/.bashrc
 
 DOWNLOAD REQUIRED PACKAGES OF THE STACK -> This step is slow, so, be patient!
 cd $IBVS_STACK
-#set to true packages required in installation/configSubmodules.cfg
-#if the packages are not already defined in the stack run script to add submodules
-./installation/gitSubmoduleAdd.sh installation/configSubmodules.cfg
-#if the packages are already defined in the stack run script to init submodules
-./installation/gitSubmoduleUpdateInit.sh installation/configSubmodules.cfg
-
-
+git subodule update --init
 
 COMPILE STACK
 cd $IBVS_STACK
