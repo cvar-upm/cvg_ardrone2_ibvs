@@ -37,7 +37,7 @@ An explanation of the stack software and connectivity between modules are specif
 ## Installation
 ### Pre-requirements 
 
-This driver has been tested on Linux machines running Ubuntu 12.10 (64 bit). However it should also work on any other mainstream Linux distributions. The driver has been tested on ROS "groovy". The code requires a compiler that is compatible with the C++11 standard. Additional required libraries are: boost and ncurses. To see dependencies upon other ROS package depends on these ROS packages: `ardrone_autonomy`, `opencv2`, `roscpp`, `image_transport`, `sensor_msgs` and `std_srvs`.
+This driver has been tested on Linux machines running Ubuntu 14.10 (64 bit). However it should also work on any other mainstream Linux distributions. The driver has been tested on ROS "groovy". The code requires a compiler that is compatible with the C++11 standard. Additional required libraries are: boost and ncurses. To see dependencies upon other ROS package depends on these ROS packages: `ardrone_autonomy`, `opencv2`, `roscpp`, `image_transport`, `sensor_msgs` and `std_srvs`.
 
 ### Installation Steps
 
@@ -50,7 +50,7 @@ The installation follows the same steps needed usually to compile a self-contain
 	$ sudo apt-get install libncurses5 ncurses-bin ncurses-dev
 	$ # Dependencies of the AR Drone SDK / ardrone_autonomy package
 	$ sudo apt-get install libsdl1.2-dev libudev-dev libiw-dev 
-	$ # Dependencies require to run the official SDK release, see:
+	$ # Dependencies required to run the official SDK release, see:
 	$ #   Official SDK website: https://projects.ardrone.org/
 	$ #   Ubuntu SDK instructions: https://projects.ardrone.org/boards/1/topics/show/5942
 	$ #   The "adrone_navigation" example is very useful to check that everything is working in your AR Drone
@@ -95,12 +95,7 @@ The installation follows the same steps needed usually to compile a self-contain
 	```bash
 	$ # navigate to the ~/workspace/ros/cvg_ardrone2_ibvs
 	$ # download stack
-	$ git clone -b catkin https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/stack
-	$ # download extStack
-	$ # ardrone_autonomy
-	$ git clone -b catkin https://github.com/AutonomyLab/ardrone_autonomy.git ./src/extStack/ardrone_autonomy
-	$ # ros_opentld
-	$ git clone https://github.com/Ronan0912/ros_opentld.git ./src/extStack/ros_opentld
+	$ git clone -b temp https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/quadrotor_stack
 	```
 
 * Set up the `IBVS_STACK` and `IBVS_WORKSPACE` environment variables. 
@@ -108,8 +103,8 @@ The installation follows the same steps needed usually to compile a self-contain
 	```bash
 	$ # note: ${IBVS_WORKSPACE}='~/workspace/ros/cvg_ardrone2_ibvs'
 	$ ./src/stack/installation/installers/installWS.sh
-	$ # note: ${IBVS_STACK}='~/workspace/ros/cvg_ardrone2_ibvs/src/stack'
-	$ cd src/stack
+	$ # note: ${IBVS_STACK}='~/workspace/ros/cvg_ardrone2_ibvs/src/quadrotor_stack'
+	$ cd src/quadrotor_stack
 	$ ./installation/installers/installStack.sh
 	$ #You have to close the terminal an re-open it, before you continue
 	```
@@ -121,15 +116,16 @@ The installation follows the same steps needed usually to compile a self-contain
 	$ source setup.sh
 	```
 
-* Final steps installation instructions:
 
-	```bash
+* Download required packages of the Stack -> This step is slow, so, be patient!:
+
+       ```bash
 	$ cd ${IBVS_STACK}
-	$ source setup.sh
-	$ rospack profile
-	$ rosdep update
-	$ cd ${IBVS_WORKSPACE}/src/extStack
-	$ rosdep install ardrone_autonomy
+	$ #set to true packages required in installation/configSubmodules.cfg
+	$ #if the packages are not already defined in the stack run script to add submodules
+	$ ./installation/gitSubmoduleAdd.sh installation/configSubmodules.cfg
+	$ #if the packages are already defined in the stack run script to init submodules
+	$ ./installation/gitSubmoduleUpdateInit.sh installation/configSubmodules.cfg
 	```
 
 * Compile the stack:
@@ -199,7 +195,7 @@ NOTE: all the launchfiles open a separate terminal with multiple tabs, where eac
 The launch scripts have to be called using the following sintax in the shell terminal: 
 
 	```bash
-	$ cd ${IBVS_STACK}/launch_dir
+	$ cd ${IBVS_STACK}/launchers
 	$ ./parrot_IBVSController_launcher_Release.sh
 	```
 
@@ -229,7 +225,6 @@ Simplified instructions to work with the controller:
       'y': land
       'h': enter hovering mode
       'm': enter move mode
-      'space bar': activate/deactivate emergency mode
 ```
 
     3. In move mode:

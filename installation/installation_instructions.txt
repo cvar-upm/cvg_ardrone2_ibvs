@@ -41,14 +41,7 @@ source devel/setup.bash
 
 
 DOWNLOAD STACK
-git clone -b catkin https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/stack
-
-
-DOWNLOAD EXT_STACK -> For ROS INDIGO. If you are not using ROS Indigo, you should download other branches
-#ardrone_autonomy
-git clone -b indigo-devel https://github.com/AutonomyLab/ardrone_autonomy.git ./src/extStack/ardrone_autonomy
-#ros_opentld
-git clone https://github.com/Ronan0912/ros_opentld.git ./src/extStack/ros_opentld
+git clone -b catkin https://github.com/Vision4UAV/cvg_ardrone2_ibvs.git ./src/quadrotor_stack
 
 
 INSTALL THE WORKSPACE -> for the setup.sh
@@ -57,31 +50,33 @@ INSTALL THE WORKSPACE -> for the setup.sh
 
 
 INSTALL THE STACK -> for the launchers and the logs
-cd src/stack
+cd src/quadrotor_stack
 ./installation/installers/installStack.sh
-cd ..
-cd ..
 
+#close terminal and reopen it, or alternatively execute
+source ~/.bashrc
 
-#close terminal and reopen it
-
-
+DOWNLOAD REQUIRED PACKAGES OF THE STACK -> This step is slow, so, be patient!
+cd $IBVS_STACK
+#set to true packages required in installation/configSubmodules.cfg
+#if the packages are not already defined in the stack run script to add submodules
+./installation/gitSubmoduleAdd.sh installation/configSubmodules.cfg
+#if the packages are already defined in the stack run script to init submodules
+./installation/gitSubmoduleUpdateInit.sh installation/configSubmodules.cfg
 
 
 
 COMPILE STACK
-cd $DRONE_STACK
+cd $IBVS_STACK
 source setup.sh
-cd $DRONE_WORKSPACE
+cd $IBVS_WORKSPACE
 catkin_make
+
 #we have noticed that it sometimes fails when compiling, because an error in the external package ros_opentld. If it fails, run "catkin_make" again. It solved all our problems from the moment!
 
 
-
-
-
 OPENING STACK with qtcreator
-cd $DRONE_WORKSPACE/src
+cd $IBVS_WORKSPACE/src
 rm CMakeLists.txt
 cp /opt/ros/indigo/share/catkin/cmake/toplevel.cmake CMakeLists.txt
 cd ..
