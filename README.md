@@ -97,7 +97,7 @@ The installation follows the same steps needed usually to compile a self-contain
 
 	```bash
 	$ # note: ${IBVS_WORKSPACE}='~/workspace/ros/cvg_ardrone2_ibvs'
-	$ ./src/stack/installation/installers/installWS.sh
+	$ ./src/quadrotor_stack/installation/installers/installWS.sh
 	$ # note: ${IBVS_STACK}='~/workspace/ros/cvg_ardrone2_ibvs/src/quadrotor_stack'
 	$ cd src/quadrotor_stack
 	$ ./installation/installers/installStack.sh
@@ -174,13 +174,13 @@ The sign convention for the commands, received by the multirotor's ROS driver, i
 
 In order to run the stack, it was decided to run each node in a separate tab of a terminal window. The initialization of the architecture is done by executing shell scripts that open a new terminal with each node running in its tab. The script that is available is the following (please take a look at them to understand how do they work):
 
-- `${IBVS_STACK}/launch_dir/parrot_IBVSController_launcher_Release.sh`
+- `${IBVS_STACK}/launchers/parrot_IBVSController_launcher_Release.sh`
 
 NOTE: all the launchfiles open a separate terminal with multiple tabs, where each tab usually runs only one tab. If you close the terminal tabs using the close button at the corner of the window which has multiple tabs, then only one of the tabs will be closed correctly (the one that is currently selected):
 
 - The easiest way to do this fast, and cleanly is to: first, press `control+c` on every tab (navigating with `control+repag` and `control+avpag`), second, use the shortcut `ctrl+shift+w` to close first all terminal tabs and, third, `ctrl+shift+q` to close the las terminal tab (which closes the window too) including all tabs. 
 
-- The following script might be used to send a SIG\_TERM to all the terminals (equivalent to pressing `control+c` in them): ${IBVS_STACK}/launch_dir/stop.sh .
+- The following script might be used to send a SIG\_TERM to all the terminals (equivalent to pressing `control+c` in them): ${IBVS_STACK}/launchers/stop.sh .
 
 The launch scripts have to be called using the following sintax in the shell terminal: 
 
@@ -248,9 +248,9 @@ Simplified instructions to work with the controller:
 ```
 
     6. Note that the commands explained in the move mode act differently when the controller is started. They change the controller references in a logical way (you can check it looking at the HUD window without flying and starting the controller). There are some contradictions yet in this options (like move forward would actually make the drone move further away from the target) and bugs (some events trigger a change of controller references back to default values).
-    7. The logs are saved in ${repository}/launch_dir/logs/date/time/${log_files}
+    7. The logs are saved in ${IBVS_STACK}/logs/drone_logger
 
-I recommend experimenting with the AR Drone and the tracker separately before running the controller. Usually you can recover control of the drone at any moment by stopping the controller ('i') and entering hovering mode ('h').
+We recommend experimenting with the AR Drone and the tracker separately before running the controller. Usually you can recover control of the drone at any moment by stopping the controller ('i') and entering hovering mode ('h').
 
 ## License
 
