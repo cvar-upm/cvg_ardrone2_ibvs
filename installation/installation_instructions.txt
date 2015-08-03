@@ -57,7 +57,7 @@ source ~/.bashrc
 
 DOWNLOAD REQUIRED PACKAGES OF THE STACK -> This step is slow, so, be patient!
 cd $IBVS_STACK
-git subodule update --init
+git submodule update --init
 
 COMPILE STACK
 cd $IBVS_STACK
