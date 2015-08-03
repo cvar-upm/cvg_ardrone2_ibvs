@@ -116,7 +116,7 @@ The installation follows the same steps needed usually to compile a self-contain
 
        ```bash
 	$ cd ${IBVS_STACK}
-	$ git subodule update --init
+	$ git submodule update --init
 	```
 
 * Compile the stack:
