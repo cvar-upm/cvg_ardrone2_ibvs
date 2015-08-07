@@ -13,9 +13,6 @@ gnome-terminal	 		\
 	--tab --title "roscore" 	--command "bash -c \"
 						roscore; 
 						exec bash\""  \
-	--tab --title "droneLogger"	--command "bash -c \"
-						roslaunch ${IBVS_STACK}/launchers/ardrone_launch/launch_files/droneLoggerROSModule.launch --wait drone_id_namespace:=drone$NUMID_DRONE drone_id_int:=$NUMID_DRONE my_stack_directory:=${IBVS_STACK}; 
-						exec bash\""  \
 	--tab --title "ardrone_driver"	--command "bash -c \"
 						roslaunch ${IBVS_STACK}/launchers/ardrone_launch/ardrone_indoors.launch --wait drone_id_namespace:=drone$NUMID_DRONE;
 						exec bash\""  \
@@ -33,4 +30,7 @@ gnome-terminal	 		\
 						exec bash\""	\
 	--tab --title "IBVSCntInterf"	--command "bash -c \"
 						roslaunch droneInterfaceROSModule droneInterface_jp_ROSModule.launch --wait drone_id_namespace:=drone$NUMID_DRONE drone_id_int:=$NUMID_DRONE my_stack_directory:=${IBVS_STACK}; 
-						exec bash\""	&
+						exec bash\""	\
+	--tab --title "droneLogger"	--command "bash -c \"
+						roslaunch ${IBVS_STACK}/launchers/ardrone_launch/launch_files/droneLoggerROSModule.launch --wait drone_id_namespace:=drone$NUMID_DRONE drone_id_int:=$NUMID_DRONE my_stack_directory:=${IBVS_STACK}; 
+						exec bash\""   &
