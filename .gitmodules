@@ -13,7 +13,7 @@
 [submodule "stack/droneIBVSControl/droneIBVSControllerROSModule"]
 	path = stack/droneIBVSControl/droneIBVSControllerROSModule
 	url = https://bitbucket.org/hridaybavle/droneibvscontrollerrosmodule.git
-	branch = IBVS
+	branch = master
 [submodule "stack/dronePerception/openTLD/droneOpenTLDTranslatorROS"]
 	path = stack/dronePerception/openTLD/droneOpenTLDTranslatorROS
 	url = https://bitbucket.org/hridaybavle/droneopentldtranslatorros.git
@@ -77,4 +77,8 @@
 [submodule "stack/libraries/referenceFrames"]
 	path = stack/libraries/referenceFrames
 	url = https://bitbucket.org/joselusl/referenceframes.git
+	branch = master
+[submodule "stack/supervision_system"]
+	path = stack/supervision_system
+	url = https://bitbucket.org/Ortinson/supervision_system
 	branch = master
