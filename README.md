@@ -1,10 +1,12 @@
+# cvg_ardrone2_ibvs
+
 ## Safety Warning and Disclaimer
 
 You are using this software at your own risk. The authors decline any responsibility for personal injuries and/or property damage.
 
 The AR Drone 2.0, supported by this framework, is a TOY. However, its operation might cause SERIOUS INJURIES to people around. So, please consider flying in a properly screened or isolated flight area.
 
-## cvg_ardrone2_ibvs
+## Description
 
 We present a vision based control strategy for tracking and following objects using an Unmanned Aerial Vehicle. We have developed an image based visual servoing method that uses only a forward looking camera for tracking and following objects from a multi-rotor UAV, without any dependence on GPS systems. Our proposed method tracks a user specified object continuously while maintaining a fixed distance from the object and also simultaneously keeping it in the center of the image plane. The algorithm is validated using a Parrot AR Drone 2.0 in outdoor conditions while tracking and following people, occlusions and also fast moving objects; showing the robustness of the proposed systems against perturbations and illumination changes. Our experiments show that the system is able to track a great variety of objects present in suburban areas, among others: people, windows, AC machines, cars and plants. 
 
